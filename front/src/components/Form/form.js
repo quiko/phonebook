@@ -13,7 +13,6 @@ function Form(props) {
     errors,
     setErrors,
     handleChange,
-    setIsSubmitting
   } = useForm(validate);
 
   useEffect(() => {
@@ -52,9 +51,9 @@ function Form(props) {
      setErrors(validate(values));
     const id = props.match.params.id;
     const errors = validate(values);
-    if (errors) {
+    console.log(errors)
+    if (!(errors.lastName || errors.firstName || errors.phoneNumber)) {
     id !== undefined ? await handleEdit(id) : await handleAdd();
-      setIsSubmitting(true);
       props.history.push("/");
     }
   };
