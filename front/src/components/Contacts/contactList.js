@@ -10,7 +10,6 @@ function ContactList(props) {
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(fetchUrl);
-      console.log("result", result.data.contact);
       setData(result.data.contact);
     };
     fetchData();
