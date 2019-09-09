@@ -7,10 +7,10 @@ const Links = () => {
   return (
     <React.Fragment>
       <li>
-        <NavLink className ="navtext"  to="/">Contacts</NavLink>
+        <NavLink className ="navtext"  to="/list">Contacts</NavLink>
       </li>
       <li>
-        <NavLink className ="navtext"  to="/">New Contact</NavLink>
+        <NavLink className ="navtext"  to="/new">New Contact</NavLink>
       </li>
       
     </React.Fragment>

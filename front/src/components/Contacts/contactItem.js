@@ -1,8 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
+import { deleteUrl } from "../../constants";
 
 
-const ContactItem = ({ data, handleDelete , handleEdit}) => {
-    return (
+
+function ContactItem({props,contacts}) {
+  
+let data = contacts
+ 
+  console.log(data)
+ 
+  async function handleDelete(id) {
+    try {
+      await axios(deleteUrl+id);
+      let filtredData = data.filter(item => item._id !== id);
+      data = filtredData;
+    } catch (error) {
+      console.log(error);
+    }
+    return data
+  }
+
+  function handleEdit(id) {
+    props.history.push(`/edit/${id}`);
+  }
+
+  return (
+ 
         data.map(contact => (
             <li key={contact._id} className="collection-item">
               <tr>
@@ -17,7 +41,8 @@ const ContactItem = ({ data, handleDelete , handleEdit}) => {
                 </td>
               </tr>
             </li>
-          ))
+        ))
+ 
     )
 }
 export default ContactItem;

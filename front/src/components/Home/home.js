@@ -1,13 +1,13 @@
 import React from "react";
 import Navbar from "../Navbar/navbar";
-import ContactList from "../Contacts/contactList";
 import "materialize-css/dist/css/materialize.min.css";
+import SearchBar from "../SearchBar/searchBar";
 
 const Home = props => {
   return (
     <React.Fragment>
       <Navbar />
-      <ContactList/>
+      <SearchBar props={props}/>
     </React.Fragment>
   );
 };
