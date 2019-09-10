@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { deleteUrl } from "../../constants";
-import "./style.css";
+import Table from "./contactsTable";
 
 function ContactItem({ props, contacts, setContacts }) {
   async function handleDelete(id) {
@@ -18,27 +18,12 @@ function ContactItem({ props, contacts, setContacts }) {
     props.history.push(`/edit/${id}`);
   }
 
-  return contacts.map(contact => (
-    <li key={contact._id} className="collection-item">
-      <div className="row">
-        <div className="col s12 m4 l2">{contact.firstName}</div>
-        <div className="col s12 m4 l2">{contact.lastName}</div>
-        <div className="col s12 m4 l2">{contact.phoneNumber}</div>
-        <div className="col s12 m4 l2 ">
-          <i className="material-icons" onClick={() => handleEdit(contact._id)}>
-            edit
-          </i>
-        </div>
-        <div className="col s12 m4 l2">
-          <i
-            className="material-icons"
-            onClick={() => handleDelete(contact._id)}
-          >
-            delete
-          </i>
-        </div>
-      </div>
-    </li>
-  ));
+  return (
+    <Table
+      contacts={contacts}
+      handleDelete={handleDelete}
+      handleEdit={handleEdit}
+    />
+  );
 }
 export default ContactItem;
