@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { useFetch } from "../Hooks/fetchHook";
 import { fetchUrl } from "../../constants";
 import ContactItem from "../Contacts/contactItem";
+import Input from "./input";
 
 function SearchBar(props) {
   const [searchValue, setSearchValue] = useState("");
-  const contacts = useFetch(fetchUrl, []);
+  const { contacts, setContacts } = useFetch(fetchUrl, []);
   const [filtred, setFiltred] = useState([]);
 
   const handleSearchInputChanges = e => {
@@ -19,30 +20,25 @@ function SearchBar(props) {
         -1
       );
     });
-    console.log(filtredContacts);
+    setContacts(filtredContacts);
     setFiltred(filtredContacts);
   };
 
   return (
     <div class="row  container">
       <div class="col s12">
-        <div class="row">
-          <div class="input-field col s12">
-            <i class="material-icons prefix">textsms</i>
-            <input
-              type="text"
-              id="autocomplete-input"
-              className="autocomplete"
-              value={searchValue}
-              onChange={e => handleSearchInputChanges(e)}
-              onKeyDown={searchContact}
-            />
-            <label htmlFor="autocomplete-input">Search</label>
-          </div>
-        </div>
+        <Input
+          searchValue={searchValue}
+          searchContact={searchContact}
+          handleSearchInputChanges={handleSearchInputChanges}
+        />
         {filtred && filtred.length > 0 ? (
           <ul className="collection">
-            <ContactItem contacts={filtred} setContacts={setFiltred} props={props.props}/>
+            <ContactItem
+              contacts={contacts}
+              setContacts={setContacts}
+              props={props.props}
+            />
           </ul>
         ) : null}
       </div>
