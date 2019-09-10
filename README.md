@@ -1,10 +1,21 @@
 # phonebook
 ## Setup to run locally
 
+This project use Reactjs , node js and MongoDB, 
+you will need node js installed on you machine in order to run the project locally.
+
+
+see https://nodejs.org
+
 
 ###Frontend
 
-enter front directory and run npm start
+enter front directory and run 
+
+```bash
+npm install
+npm start
+```
 
 
 ###Backend
