@@ -1,8 +1,8 @@
 # phonebook
 ## Setup to run locally
 
-This project use Reactjs , node js and MongoDB, 
-you will need node js installed on you machine in order to run the project locally.
+This project is based on Reactjs , node js and MongoDB, 
+you will need node js installed on your machine in order to run the project locally.
 
 
 see https://nodejs.org
