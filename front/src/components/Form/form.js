@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../Navbar/navbar";
 import Input from "./formInput";
-import useForm from "./formHook";
+import useForm from "../Hooks/formHook";
 import axios from "axios";
 import { addUrl, editUrl } from "../../constants";
 import validate from "./validateForm";
