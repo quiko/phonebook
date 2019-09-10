@@ -7,6 +7,9 @@ const keys = require("./config/keys");
 const contactsRouter = require("./routes/contacts");
 const app = express();
 
+// Allow use of env vars in .env file
+require("dotenv/config");
+
 //connect to db
 mongoose.Promise = global.Promise;
 mongoose.connect(
@@ -24,6 +27,10 @@ app.use(bodyParser.json());
 
 //routes
 app.use("/contacts", contactsRouter);
+
+//disable caching
+app.disable("etag");
+
 
 //start server
 const port = process.env.PORT || 5000;
