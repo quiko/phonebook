@@ -12,6 +12,9 @@ const Links = () => {
       <li>
         <NavLink className ="navtext"  to="/new">New Contact</NavLink>
       </li>
+      <li>
+        <NavLink className ="navtext"  to="/">Home</NavLink>
+      </li>
       
     </React.Fragment>
   );

@@ -1,48 +1,44 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
 import { deleteUrl } from "../../constants";
+import "./style.css";
 
-
-
-function ContactItem({props,contacts}) {
-  
-let data = contacts
- 
-  console.log(data)
- 
+function ContactItem({ props, contacts, setContacts }) {
   async function handleDelete(id) {
     try {
-      await axios(deleteUrl+id);
-      let filtredData = data.filter(item => item._id !== id);
-      data = filtredData;
+      await axios(deleteUrl + id);
+      let results = contacts.filter(item => item._id !== id);
+      setContacts(results);
     } catch (error) {
       console.log(error);
     }
-    return data
   }
 
   function handleEdit(id) {
     props.history.push(`/edit/${id}`);
   }
 
-  return (
- 
-        data.map(contact => (
-            <li key={contact._id} className="collection-item">
-              <tr>
-                <td>{contact.firstName}</td>
-                <td>{contact.lastName}</td>
-                <td>{contact.phoneNumber}</td>
-                <td>
-                  <button onClick = {()=>handleEdit(contact._id)}>edit</button>
-                </td>
-                <td>
-                  <button onClick={()=>handleDelete(contact._id)}>delete</button>
-                </td>
-              </tr>
-            </li>
-        ))
- 
-    )
+  return contacts.map(contact => (
+    <li key={contact._id} className="collection-item">
+      <div className="row">
+        <div className="col s12 m4 l2">{contact.firstName}</div>
+        <div className="col s12 m4 l2">{contact.lastName}</div>
+        <div className="col s12 m4 l2">{contact.phoneNumber}</div>
+        <div className="col s12 m4 l2 ">
+          <i className="material-icons" onClick={() => handleEdit(contact._id)}>
+            edit
+          </i>
+        </div>
+        <div className="col s12 m4 l2">
+          <i
+            className="material-icons"
+            onClick={() => handleDelete(contact._id)}
+          >
+            delete
+          </i>
+        </div>
+      </div>
+    </li>
+  ));
 }
 export default ContactItem;

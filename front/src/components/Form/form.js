@@ -50,7 +50,7 @@ function Form(props) {
     const errors = validate(values);
     if (!(errors.lastName || errors.firstName || errors.phoneNumber)) {
       id !== undefined ? await handleEdit(id) : await handleAdd();
-      props.history.push("/");
+      props.history.push("/list");
     }
   };
 

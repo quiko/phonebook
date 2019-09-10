@@ -24,7 +24,7 @@ function SearchBar(props) {
   };
 
   return (
-    <div class="row">
+    <div class="row  container">
       <div class="col s12">
         <div class="row">
           <div class="input-field col s12">
@@ -42,7 +42,7 @@ function SearchBar(props) {
         </div>
         {filtred && filtred.length > 0 ? (
           <ul className="collection">
-            <ContactItem contacts={filtred} props={props.props}/>
+            <ContactItem contacts={filtred} setContacts={setFiltred} props={props.props}/>
           </ul>
         ) : null}
       </div>
